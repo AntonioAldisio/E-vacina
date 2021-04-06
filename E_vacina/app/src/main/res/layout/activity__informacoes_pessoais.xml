@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.activity.Activity_InformacoesPessoais">
+    tools:context=".ui.visual.activity.Activity_InformacoesPessoais">
 
     <Button
         android:id="@+id/activity_login_button_entrar2"

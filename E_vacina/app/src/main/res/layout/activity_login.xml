@@ -5,7 +5,7 @@
     android:id="@+id/act"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.activity.Activity_login">
+    tools:context=".ui.visual.activity.Activity_login">
 
     <ImageView
         android:id="@+id/activity_login_logo"
@@ -36,18 +36,20 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="180dp"
         android:layout_marginTop="300dp"
+        android:layout_marginBottom="5dp"
         android:text="E-mail"
         android:textColor="#F2994A"
         android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/activity_login_input_email"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/activity_login_input_email"
-        android:layout_width="332dp"
+        android:layout_width="300dp"
         android:layout_height="40dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="324dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="332dp"
         android:ems="10"
         android:inputType="textEmailAddress"
         app:layout_constraintStart_toStartOf="parent"
@@ -57,17 +59,17 @@
         android:id="@+id/imageView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="360dp"
-        android:layout_marginTop="324dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="340dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/ic_dialog_email" />
 
     <EditText
         android:id="@+id/activity_login_input_password"
-        android:layout_width="332dp"
+        android:layout_width="300dp"
         android:layout_height="40dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="56dp"
         android:layout_marginTop="416dp"
         android:ems="10"
         android:inputType="textPassword"
@@ -79,8 +81,8 @@
         android:id="@+id/imageView4"
         android:layout_width="32dp"
         android:layout_height="33dp"
-        android:layout_marginStart="360dp"
-        android:layout_marginTop="416dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="420dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/ic_lock_idle_lock" />
@@ -91,36 +93,44 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="180dp"
         android:layout_marginTop="392dp"
+        android:layout_marginEnd="187dp"
+        android:layout_marginBottom="5dp"
         android:text="Senha"
         android:textColor="#F2994A"
         android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/activity_login_input_password"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/activity_login_button_entrar"
-        android:layout_width="382dp"
+        android:layout_width="300dp"
         android:layout_height="42dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="496dp"
+        android:layout_marginEnd="16dp"
+        android:background="#F2994A"
         android:text="Entrar"
         android:textColor="@color/white"
-        android:background="#F2994A"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/activity_login_button_cadastrar"
-        android:layout_width="382dp"
+        android:layout_width="300dp"
         android:layout_height="42dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="552dp"
-        android:outlineSpotShadowColor="#F2994A"
-        android:textColorHighlight="#F2994A"
-        android:text="Cadastrar"
+        android:layout_marginEnd="16dp"
         android:background="#F2994A"
+        android:outlineSpotShadowColor="#F2994A"
+        android:text="Cadastrar"
         android:textColor="@color/white"
+        android:textColorHighlight="#F2994A"
         android:textColorHint="#F2994A"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

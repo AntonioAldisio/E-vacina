@@ -1,7 +1,9 @@
-package mds.gams.evacina.ui.activity;
+package mds.gams.evacina.ui.visual.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import androidx.appcompat.app.AppCompatActivity;
+
+import mds.gams.evacina.R;
 
 public class ActivityHomepage extends AppCompatActivity {
 

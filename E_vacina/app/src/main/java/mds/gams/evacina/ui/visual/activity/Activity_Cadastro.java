@@ -1,6 +1,6 @@
-package mds.gams.evacina.ui.activity;
+package mds.gams.evacina.ui.visual.activity;
 
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
 import mds.gams.evacina.R;
@@ -12,4 +12,5 @@ public class Activity_Cadastro extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro);
     }
+
 }
