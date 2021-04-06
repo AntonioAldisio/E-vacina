@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "138051356234",
+    "project_id": "evacina-d997d",
+    "storage_bucket": "evacina-d997d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:138051356234:android:5f872e39e5837f38e3c8b3",
+        "android_client_info": {
+          "package_name": "mds.gams.evacina"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "138051356234-qpms8bds864na55o1r4plkee4jcn1a8j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyActx1seWdV-imzOlDql29WtV8n3u0_O7c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "138051356234-qpms8bds864na55o1r4plkee4jcn1a8j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
