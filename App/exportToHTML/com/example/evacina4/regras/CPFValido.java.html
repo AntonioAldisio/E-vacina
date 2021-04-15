@@ -1,0 +1,84 @@
+<html>
+<head>
+<title>CPFValido.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #808080;}
+.s3 { color: #6a8759;}
+.s4 { color: #6897bb;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+CPFValido.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com.example.evacina4.regras</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">java.util.InputMismatchException</span><span class="s0">;</span>
+
+<span class="s0">public class </span><span class="s1">CPFValido {</span>
+
+    <span class="s0">public static boolean </span><span class="s1">isCPF(String CPF) {</span>
+        <span class="s2">// considera-se erro CPF's formados por uma sequencia de numeros iguais</span>
+        <span class="s0">if </span><span class="s1">(CPF.equals(</span><span class="s3">&quot;00000000000&quot;</span><span class="s1">) ||</span>
+                <span class="s1">CPF.equals(</span><span class="s3">&quot;11111111111&quot;</span><span class="s1">) ||</span>
+                <span class="s1">CPF.equals(</span><span class="s3">&quot;22222222222&quot;</span><span class="s1">) || CPF.equals(</span><span class="s3">&quot;33333333333&quot;</span><span class="s1">) ||</span>
+                <span class="s1">CPF.equals(</span><span class="s3">&quot;44444444444&quot;</span><span class="s1">) || CPF.equals(</span><span class="s3">&quot;55555555555&quot;</span><span class="s1">) ||</span>
+                <span class="s1">CPF.equals(</span><span class="s3">&quot;66666666666&quot;</span><span class="s1">) || CPF.equals(</span><span class="s3">&quot;77777777777&quot;</span><span class="s1">) ||</span>
+                <span class="s1">CPF.equals(</span><span class="s3">&quot;88888888888&quot;</span><span class="s1">) || CPF.equals(</span><span class="s3">&quot;99999999999&quot;</span><span class="s1">) ||</span>
+                <span class="s1">(CPF.length() != </span><span class="s4">11</span><span class="s1">))</span>
+            <span class="s0">return</span><span class="s1">(</span><span class="s0">false</span><span class="s1">)</span><span class="s0">;</span>
+
+        <span class="s0">char </span><span class="s1">dig10</span><span class="s0">, </span><span class="s1">dig11</span><span class="s0">;</span>
+        <span class="s0">int </span><span class="s1">sm</span><span class="s0">, </span><span class="s1">i</span><span class="s0">, </span><span class="s1">r</span><span class="s0">, </span><span class="s1">num</span><span class="s0">, </span><span class="s1">peso</span><span class="s0">;</span>
+
+        <span class="s2">// &quot;try&quot; - protege o codigo para eventuais erros de conversao de tipo (int)</span>
+        <span class="s0">try </span><span class="s1">{</span>
+            <span class="s2">// Calculo do 1o. Digito Verificador</span>
+            <span class="s1">sm = </span><span class="s4">0</span><span class="s0">;</span>
+            <span class="s1">peso = </span><span class="s4">10</span><span class="s0">;</span>
+            <span class="s0">for </span><span class="s1">(i=</span><span class="s4">0</span><span class="s0">; </span><span class="s1">i&lt;</span><span class="s4">9</span><span class="s0">; </span><span class="s1">i++) {</span>
+                <span class="s2">// converte o i-esimo caractere do CPF em um numero:</span>
+                <span class="s2">// por exemplo, transforma o caractere '0' no inteiro 0</span>
+                <span class="s2">// (48 eh a posicao de '0' na tabela ASCII)</span>
+                <span class="s1">num = (</span><span class="s0">int</span><span class="s1">)(CPF.charAt(i) - </span><span class="s4">48</span><span class="s1">)</span><span class="s0">;</span>
+                <span class="s1">sm = sm + (num * peso)</span><span class="s0">;</span>
+                <span class="s1">peso = peso - </span><span class="s4">1</span><span class="s0">;</span>
+            <span class="s1">}</span>
+
+            <span class="s1">r = </span><span class="s4">11 </span><span class="s1">- (sm % </span><span class="s4">11</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s0">if </span><span class="s1">((r == </span><span class="s4">10</span><span class="s1">) || (r == </span><span class="s4">11</span><span class="s1">))</span>
+                <span class="s1">dig10 = </span><span class="s3">'0'</span><span class="s0">;</span>
+            <span class="s0">else </span><span class="s1">dig10 = (</span><span class="s0">char</span><span class="s1">)(r + </span><span class="s4">48</span><span class="s1">)</span><span class="s0">; </span><span class="s2">// converte no respectivo caractere numerico</span>
+
+            <span class="s2">// Calculo do 2o. Digito Verificador</span>
+            <span class="s1">sm = </span><span class="s4">0</span><span class="s0">;</span>
+            <span class="s1">peso = </span><span class="s4">11</span><span class="s0">;</span>
+            <span class="s0">for</span><span class="s1">(i=</span><span class="s4">0</span><span class="s0">; </span><span class="s1">i&lt;</span><span class="s4">10</span><span class="s0">; </span><span class="s1">i++) {</span>
+                <span class="s1">num = (</span><span class="s0">int</span><span class="s1">)(CPF.charAt(i) - </span><span class="s4">48</span><span class="s1">)</span><span class="s0">;</span>
+                <span class="s1">sm = sm + (num * peso)</span><span class="s0">;</span>
+                <span class="s1">peso = peso - </span><span class="s4">1</span><span class="s0">;</span>
+            <span class="s1">}</span>
+
+            <span class="s1">r = </span><span class="s4">11 </span><span class="s1">- (sm % </span><span class="s4">11</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s0">if </span><span class="s1">((r == </span><span class="s4">10</span><span class="s1">) || (r == </span><span class="s4">11</span><span class="s1">))</span>
+                <span class="s1">dig11 = </span><span class="s3">'0'</span><span class="s0">;</span>
+            <span class="s0">else </span><span class="s1">dig11 = (</span><span class="s0">char</span><span class="s1">)(r + </span><span class="s4">48</span><span class="s1">)</span><span class="s0">;</span>
+
+            <span class="s2">// Verifica se os digitos calculados conferem com os digitos informados.</span>
+            <span class="s0">if </span><span class="s1">((dig10 == CPF.charAt(</span><span class="s4">9</span><span class="s1">)) &amp;&amp; (dig11 == CPF.charAt(</span><span class="s4">10</span><span class="s1">)))</span>
+                <span class="s0">return</span><span class="s1">(</span><span class="s0">true</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s0">else return</span><span class="s1">(</span><span class="s0">false</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">} </span><span class="s0">catch </span><span class="s1">(InputMismatchException erro) {</span>
+            <span class="s0">return</span><span class="s1">(</span><span class="s0">false</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+
+<span class="s1">}</span>
+</pre>
+</body>
+</html>

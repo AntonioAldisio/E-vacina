@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.acitivity.ActivityCadastroVacina">
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="84dp"
+        android:text="Cadastro de vacinas"
+        android:textColor="#FF5722"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/codigo_cadastro_vacinas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:hint="Codigo"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Peça para um profissional da saude cadastrar as vacinas tomadas por meio de um codigo criado para ele na hora do cadastro"
+        app:layout_constraintEnd_toEndOf="@+id/codigo_cadastro_vacinas"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/codigo_cadastro_vacinas"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+    <EditText
+        android:id="@+id/nome_cadastro_vacinas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:hint="Nome da vacina"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/codigo_cadastro_vacinas"
+        app:layout_constraintStart_toStartOf="@+id/codigo_cadastro_vacinas"
+        app:layout_constraintTop_toBottomOf="@+id/codigo_cadastro_vacinas" />
+
+    <EditText
+        android:id="@+id/lote_cadastro_vacinas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:hint="Lote"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="@+id/nome_cadastro_vacinas"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/nome_cadastro_vacinas"
+        app:layout_constraintTop_toBottomOf="@+id/nome_cadastro_vacinas" />
+
+    <EditText
+        android:id="@+id/aplicador_cadastro_vacinas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:hint="Aplicador da vacina"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/lote_cadastro_vacinas"
+        app:layout_constraintStart_toStartOf="@+id/lote_cadastro_vacinas"
+        app:layout_constraintTop_toBottomOf="@+id/lote_cadastro_vacinas" />
+
+    <Button
+        android:id="@+id/botao_cadastro_vacinas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Enviar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/aplicador_cadastro_vacinas" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

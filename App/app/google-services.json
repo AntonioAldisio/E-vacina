@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "411554074583",
+    "project_id": "e-vacina-7782b",
+    "storage_bucket": "e-vacina-7782b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:411554074583:android:f7a63c5e10915a8c6a8592",
+        "android_client_info": {
+          "package_name": "com.example.evacina4"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "411554074583-vghg40pjpf4rf24p741f5q1f867l2v66.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.evacina4",
+            "certificate_hash": "ce3131f9f4e49910957a7d632fb05fa837767f26"
+          }
+        },
+        {
+          "client_id": "411554074583-iptegor1npj8327hn3ue1nj3g6qmmkhl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxOHQVOzk-ZPyqcz8kh-nBkLmSq6joTNI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "411554074583-iptegor1npj8327hn3ue1nj3g6qmmkhl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

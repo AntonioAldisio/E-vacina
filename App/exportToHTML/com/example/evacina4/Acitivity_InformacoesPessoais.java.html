@@ -1,0 +1,143 @@
+<html>
+<head>
+<title>Acitivity_InformacoesPessoais.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6a8759;}
+.s3 { color: #808080;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Acitivity_InformacoesPessoais.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com.example.evacina4</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">androidx.appcompat.app.AppCompatActivity</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">android.content.Intent</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.os.Bundle</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.text.TextUtils</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.view.View</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.widget.Button</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.widget.EditText</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.widget.Toast</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">com.google.android.gms.common.internal.FallbackServiceBroker</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.google.android.gms.tasks.OnSuccessListener</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.google.firebase.auth.FirebaseAuth</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.google.firebase.firestore.DocumentReference</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.google.firebase.firestore.FirebaseFirestore</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">java.util.HashMap</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">java.util.Map</span><span class="s0">;</span>
+
+<span class="s0">import static </span><span class="s1">com.example.evacina4.regras.CPFValido.isCPF</span><span class="s0">;</span>
+
+<span class="s0">public class </span><span class="s1">Acitivity_InformacoesPessoais </span><span class="s0">extends </span><span class="s1">AppCompatActivity {</span>
+
+    <span class="s0">public static final </span><span class="s1">String NOME_KEY = </span><span class="s2">&quot;Nome&quot;</span><span class="s0">;</span>
+    <span class="s0">public static final </span><span class="s1">String NOMESOBRENOME_KEY = </span><span class="s2">&quot;Sobrenome&quot;</span><span class="s0">;</span>
+    <span class="s0">public static final </span><span class="s1">String CPF_KEY = </span><span class="s2">&quot;CPF&quot;</span><span class="s0">;</span>
+    <span class="s0">public static final </span><span class="s1">String Endereco_KEY = </span><span class="s2">&quot;Endereço&quot;</span><span class="s0">;</span>
+    <span class="s0">public static final </span><span class="s1">String anivesario_KEY = </span><span class="s2">&quot;aniversario&quot;</span><span class="s0">;</span>
+
+
+    <span class="s0">private </span><span class="s1">String usario_key = FirebaseAuth.getInstance().getUid()</span><span class="s0">;</span>
+    <span class="s0">private </span><span class="s1">Button salvar</span><span class="s0">;</span>
+    <span class="s0">private </span><span class="s1">DocumentReference dbPessoais = FirebaseFirestore.getInstance().collection(</span><span class="s2">&quot;users&quot;</span><span class="s1">).document(usario_key).collection(</span><span class="s2">&quot;informacoes&quot;</span><span class="s1">).document(</span><span class="s2">&quot;Pessoais&quot;</span><span class="s1">)</span><span class="s0">;</span>
+    <span class="s0">private </span><span class="s1">DocumentReference dbVacinas  = FirebaseFirestore.getInstance().collection(</span><span class="s2">&quot;users&quot;</span><span class="s1">).document(usario_key).collection(</span><span class="s2">&quot;informacoes&quot;</span><span class="s1">).document(</span><span class="s2">&quot;vacinas&quot;</span><span class="s1">)</span><span class="s0">;</span>
+
+    <span class="s1">@Override</span>
+    <span class="s0">protected void </span><span class="s1">onCreate(Bundle savedInstanceState) {</span>
+        <span class="s0">super</span><span class="s1">.onCreate(savedInstanceState)</span><span class="s0">;</span>
+        <span class="s1">setContentView(R.layout.activity_acitivity__informacoes_pessoais)</span><span class="s0">;</span>
+
+        <span class="s1">EditText nome = (EditText) findViewById(R.id.Informacoes_Pessoais_input_nome)</span><span class="s0">;</span>
+        <span class="s1">EditText sobrenome = (EditText) findViewById(R.id.informacoes_Pessoais_input_sobreNome)</span><span class="s0">;</span>
+        <span class="s1">EditText CPF = (EditText) findViewById(R.id.informacoes_Pessoais_input_CPF)</span><span class="s0">;</span>
+        <span class="s1">EditText endereco = (EditText) findViewById(R.id.informacoes_Pessoais_input_Endereco)</span><span class="s0">;</span>
+        <span class="s1">EditText data = (EditText) findViewById(R.id.informacoes_Pessoais_input_data_aniversario)</span><span class="s0">;</span>
+
+        <span class="s1">salvar = findViewById(R.id.informacoes_button_salva)</span><span class="s0">;</span>
+
+        <span class="s1">salvar.setOnClickListener(</span><span class="s0">new </span><span class="s1">View.OnClickListener() {</span>
+            <span class="s1">@Override</span>
+            <span class="s0">public void </span><span class="s1">onClick(View v) {</span>
+
+                <span class="s1">String registarnome = nome.getText().toString().trim()</span><span class="s0">;</span>
+                <span class="s1">String registarsobrenome = sobrenome.getText().toString().trim()</span><span class="s0">;</span>
+                <span class="s1">String registarCPF = CPF.getText().toString().trim()</span><span class="s0">;</span>
+                <span class="s1">String registarendereco = endereco.getText().toString().trim()</span><span class="s0">;</span>
+                <span class="s1">String registradata = data.getText().toString().trim()</span><span class="s0">;</span>
+
+                <span class="s0">if</span><span class="s1">(!TextUtils.isEmpty(registarnome)|| !TextUtils.isEmpty(registarsobrenome) ||</span>
+                        <span class="s1">!TextUtils.isEmpty(registarCPF) || !TextUtils.isEmpty(registarendereco) ||!TextUtils.isEmpty(registradata)){</span>
+                    <span class="s0">if</span><span class="s1">(isCPF(registarCPF)){</span>
+
+                        <span class="s1">Map&lt;String</span><span class="s0">, </span><span class="s1">Object&gt; DatatoSave = </span><span class="s0">new </span><span class="s1">HashMap&lt;String</span><span class="s0">, </span><span class="s1">Object&gt;()</span><span class="s0">;</span>
+                        <span class="s1">DatatoSave.put(NOME_KEY</span><span class="s0">, </span><span class="s1">registarnome)</span><span class="s0">;</span>
+                        <span class="s1">DatatoSave.put(NOMESOBRENOME_KEY</span><span class="s0">, </span><span class="s1">registarsobrenome)</span><span class="s0">;</span>
+                        <span class="s1">DatatoSave.put(CPF_KEY</span><span class="s0">, </span><span class="s1">registarCPF)</span><span class="s0">;</span>
+                        <span class="s1">DatatoSave.put(Endereco_KEY</span><span class="s0">, </span><span class="s1">registarendereco)</span><span class="s0">;</span>
+                        <span class="s1">DatatoSave.put(anivesario_KEY</span><span class="s0">, </span><span class="s1">registradata)</span><span class="s0">;</span>
+
+                        <span class="s3">//envia banco</span>
+                        <span class="s1">dbPessoais.set(DatatoSave).addOnSuccessListener(</span><span class="s0">new </span><span class="s1">OnSuccessListener&lt;Void&gt;() {</span>
+                            <span class="s1">@Override</span>
+                            <span class="s0">public void </span><span class="s1">onSuccess(Void aVoid) {</span>
+
+                                <span class="s1">String falso = </span><span class="s2">&quot;0&quot;</span><span class="s0">;</span>
+                                <span class="s1">Map&lt;String</span><span class="s0">, </span><span class="s1">Object&gt; DatatoSaveVacina = </span><span class="s0">new </span><span class="s1">HashMap&lt;String</span><span class="s0">, </span><span class="s1">Object&gt;()</span><span class="s0">;</span>
+                                <span class="s1">DatatoSaveVacina.put(</span><span class="s2">&quot;BCG&quot;</span><span class="s0">,</span><span class="s1">falso)</span><span class="s0">;</span>
+                                <span class="s1">DatatoSaveVacina.put(</span><span class="s2">&quot;HepatitteB&quot;</span><span class="s0">,</span><span class="s1">falso)</span><span class="s0">;</span>
+                                <span class="s1">DatatoSaveVacina.put(</span><span class="s2">&quot;Penta&quot;</span><span class="s0">,</span><span class="s1">falso)</span><span class="s0">;</span>
+                                <span class="s1">DatatoSaveVacina.put(</span><span class="s2">&quot;VipVop&quot;</span><span class="s0">,</span><span class="s1">falso)</span><span class="s0">;</span>
+                                <span class="s1">DatatoSaveVacina.put(</span><span class="s2">&quot;pneuococia&quot;</span><span class="s0">,</span><span class="s1">falso)</span><span class="s0">;</span>
+                                <span class="s1">DatatoSaveVacina.put(</span><span class="s2">&quot;Rotavirus&quot;</span><span class="s0">,</span><span class="s1">falso)</span><span class="s0">;</span>
+                                <span class="s1">DatatoSaveVacina.put(</span><span class="s2">&quot;MenigocociaC&quot;</span><span class="s0">,</span><span class="s1">falso)</span><span class="s0">;</span>
+                                <span class="s1">DatatoSaveVacina.put(</span><span class="s2">&quot;Febre Amarela&quot;</span><span class="s0">,</span><span class="s1">falso)</span><span class="s0">;</span>
+                                <span class="s1">DatatoSaveVacina.put(</span><span class="s2">&quot;Hepatite A&quot;</span><span class="s0">,</span><span class="s1">falso)</span><span class="s0">;</span>
+                                <span class="s1">DatatoSaveVacina.put(</span><span class="s2">&quot;Triplice_viral&quot;</span><span class="s0">,</span><span class="s1">falso)</span><span class="s0">;</span>
+                                <span class="s1">DatatoSaveVacina.put(</span><span class="s2">&quot;Tetra_viral&quot;</span><span class="s0">,</span><span class="s1">falso)</span><span class="s0">;</span>
+                                <span class="s1">DatatoSaveVacina.put(</span><span class="s2">&quot;HPV&quot;</span><span class="s0">,</span><span class="s1">falso)</span><span class="s0">;</span>
+                                <span class="s1">DatatoSaveVacina.put(</span><span class="s2">&quot;Dupla_Adulto&quot;</span><span class="s0">,</span><span class="s1">falso)</span><span class="s0">;</span>
+                                <span class="s1">DatatoSaveVacina.put(</span><span class="s2">&quot;DTpa&quot;</span><span class="s0">,</span><span class="s1">falso)</span><span class="s0">;</span>
+                                <span class="s1">dbVacinas.set(DatatoSaveVacina).addOnSuccessListener(</span><span class="s0">new </span><span class="s1">OnSuccessListener&lt;Void&gt;() {</span>
+                                    <span class="s1">@Override</span>
+                                    <span class="s0">public void </span><span class="s1">onSuccess(Void aVoid) {</span>
+                                        <span class="s1">toHome()</span><span class="s0">;</span>
+                                    <span class="s1">}</span>
+                                <span class="s1">})</span><span class="s0">;</span>
+                            <span class="s1">}</span>
+                        <span class="s1">})</span><span class="s0">;</span>
+
+
+
+                    <span class="s1">}</span><span class="s0">else</span><span class="s1">{</span>
+                        <span class="s1">Toast.makeText(Acitivity_InformacoesPessoais.</span><span class="s0">this,</span><span class="s2">&quot;CPF inválido&quot;</span><span class="s0">,</span><span class="s1">Toast.LENGTH_LONG).show()</span><span class="s0">;</span>
+                    <span class="s1">}</span>
+                <span class="s1">}</span>
+
+            <span class="s1">}</span>
+        <span class="s1">})</span><span class="s0">;</span>
+
+    <span class="s1">}</span>
+
+    <span class="s0">private void </span><span class="s1">toHome(){</span>
+        <span class="s1">Intent intent = </span><span class="s0">new </span><span class="s1">Intent(</span><span class="s0">this, </span><span class="s1">Activity_homepage.</span><span class="s0">class</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">startActivity(intent)</span><span class="s0">;</span>
+        <span class="s1">finish()</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+
+
+<span class="s1">}</span>
+
+</pre>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+
+
+        android:id="@+id/item_editar"
+        android:icon="@drawable/ic_menu_manage"
+        android:title="Editar perfil"
+
+        app:showAsAction="never" />
+
+    <item
+
+
+        android:id="@+id/item_cadastrar"
+        android:title="Cadastrar vacinas"
+        app:showAsAction="never" />
+
+    <item
+
+
+        android:id="@+id/item_vacinas"
+        android:title="Vacinas"
+        app:showAsAction="never" />
+
+    <item
+
+
+        android:id="@+id/item_excluir"
+        android:checkable="false"
+        android:title="Excluir conta" />
+
+</menu>

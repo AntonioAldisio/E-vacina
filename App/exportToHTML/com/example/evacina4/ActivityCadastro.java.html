@@ -1,0 +1,114 @@
+<html>
+<head>
+<title>ActivityCadastro.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6a8759;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+ActivityCadastro.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com.example.evacina4</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">androidx.annotation.NonNull</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">androidx.appcompat.app.AppCompatActivity</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">android.content.Intent</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.text.TextUtils</span><span class="s0">;</span>
+<span class="s0">import  </span><span class="s1">android.view.View</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.widget.Button</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.widget.EditText</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.widget.ProgressBar</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.widget.Toast</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.os.Bundle</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">com.google.android.gms.tasks.OnCompleteListener</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.google.android.gms.tasks.OnSuccessListener</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.google.android.gms.tasks.Task</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.google.firebase.auth.AuthResult</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.google.firebase.auth.FirebaseAuth</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.google.firebase.firestore.DocumentReference</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">com.google.firebase.firestore.FirebaseFirestore</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">java.util.HashMap</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">java.util.Map</span><span class="s0">;</span>
+
+<span class="s0">public class </span><span class="s1">ActivityCadastro </span><span class="s0">extends </span><span class="s1">AppCompatActivity {</span>
+
+
+    <span class="s0">private </span><span class="s1">EditText Email</span><span class="s0">;</span>
+    <span class="s0">private </span><span class="s1">EditText Senha</span><span class="s0">;</span>
+    <span class="s0">private </span><span class="s1">EditText ConfirmarSenha</span><span class="s0">;</span>
+    <span class="s0">private </span><span class="s1">Button cadastrar</span><span class="s0">;</span>
+    <span class="s0">private </span><span class="s1">Button entrar</span><span class="s0">;</span>
+    <span class="s0">private </span><span class="s1">ProgressBar progressBar</span><span class="s0">;</span>
+    <span class="s0">private </span><span class="s1">FirebaseAuth mAuth</span><span class="s0">;</span>
+
+    <span class="s1">@Override</span>
+    <span class="s0">protected void </span><span class="s1">onCreate(Bundle savedInstanceState) {</span>
+        <span class="s0">super</span><span class="s1">.onCreate(savedInstanceState)</span><span class="s0">;</span>
+        <span class="s1">setContentView(R.layout.activity_cadastro)</span><span class="s0">;</span>
+        <span class="s1">mAuth = FirebaseAuth.getInstance()</span><span class="s0">;</span>
+        <span class="s1">Email =(EditText) findViewById(R.id.activity_cadastro_input_email)</span><span class="s0">;</span>
+        <span class="s1">Senha =  (EditText) findViewById(R.id.activity_cadastro_input_password)</span><span class="s0">;</span>
+        <span class="s1">ConfirmarSenha = (EditText) findViewById(R.id.activity_cadastro_input_password_confirmar)</span><span class="s0">;</span>
+        <span class="s1">cadastrar= findViewById(R.id.activity_login_button_confirmar)</span><span class="s0">;</span>
+        <span class="s1">entrar=findViewById(R.id.button_entrar_inicial)</span><span class="s0">;</span>
+        <span class="s1">progressBar= findViewById(R.id.progressBar)</span><span class="s0">;</span>
+
+    <span class="s1">cadastrar.setOnClickListener(</span><span class="s0">new </span><span class="s1">View.OnClickListener() {</span>
+        <span class="s1">@Override</span>
+        <span class="s0">public void </span><span class="s1">onClick(View view) {</span>
+            <span class="s1">String registrarEmail= Email.getText().toString().trim()</span><span class="s0">;</span>
+            <span class="s1">String senha= Senha.getText().toString().trim()</span><span class="s0">;</span>
+            <span class="s1">String confirmarSenha= ConfirmarSenha.getText().toString().trim()</span><span class="s0">;</span>
+            <span class="s0">if</span><span class="s1">(!TextUtils.isEmpty(registrarEmail) || !TextUtils.isEmpty(senha) || !TextUtils.isEmpty(confirmarSenha)){</span>
+                <span class="s0">if</span><span class="s1">(senha.equals(confirmarSenha)){</span>
+                    <span class="s1">progressBar.setVisibility(view.VISIBLE)</span><span class="s0">;</span>
+                    <span class="s1">mAuth.createUserWithEmailAndPassword(registrarEmail</span><span class="s0">,</span><span class="s1">senha).addOnCompleteListener(</span><span class="s0">new </span><span class="s1">OnCompleteListener&lt;AuthResult&gt;() {</span>
+                        <span class="s1">@Override</span>
+                        <span class="s0">public void </span><span class="s1">onComplete(@NonNull Task&lt;AuthResult&gt; task) {</span>
+                            <span class="s0">if</span><span class="s1">(task.isSuccessful()){</span>
+
+                                <span class="s1">abrirTelaPrincipal()</span><span class="s0">;</span>
+                            <span class="s1">} </span><span class="s0">else</span><span class="s1">{</span>
+                                <span class="s1">String error= task.getException().getMessage()</span><span class="s0">;</span>
+                                <span class="s1">Toast.makeText(ActivityCadastro.</span><span class="s0">this, </span><span class="s2">&quot;&quot;</span><span class="s1">+error</span><span class="s0">, </span><span class="s1">Toast.LENGTH_SHORT).show()</span><span class="s0">;</span>
+                            <span class="s1">}</span>
+                            <span class="s1">progressBar.setVisibility(View.INVISIBLE)</span><span class="s0">;</span>
+                        <span class="s1">}</span>
+                    <span class="s1">})</span><span class="s0">;</span>
+                <span class="s1">}</span>
+                <span class="s0">else</span><span class="s1">{</span>
+                    <span class="s1">Toast.makeText(ActivityCadastro.</span><span class="s0">this, </span><span class="s2">&quot;A senha deve ser a mesma em ambos os campos&quot;</span><span class="s0">, </span><span class="s1">Toast.LENGTH_SHORT).show()</span><span class="s0">;</span>
+
+                <span class="s1">}</span>
+
+            <span class="s1">}</span>
+        <span class="s1">}</span>
+    <span class="s1">})</span><span class="s0">;</span>
+    <span class="s1">entrar.setOnClickListener(</span><span class="s0">new </span><span class="s1">View.OnClickListener() {</span>
+        <span class="s1">@Override</span>
+        <span class="s0">public void </span><span class="s1">onClick(View view) {</span>
+            <span class="s1">Intent intent = </span><span class="s0">new </span><span class="s1">Intent(ActivityCadastro.</span><span class="s0">this,</span><span class="s1">MainActivity.</span><span class="s0">class</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s1">startActivity(intent)</span><span class="s0">;</span>
+            <span class="s1">finish()</span><span class="s0">;</span>
+        <span class="s1">}</span>
+    <span class="s1">})</span><span class="s0">;</span>
+
+    <span class="s1">}</span>
+
+    <span class="s0">private void </span><span class="s1">abrirTelaPrincipal() {</span>
+        <span class="s1">Intent intent = </span><span class="s0">new </span><span class="s1">Intent(ActivityCadastro.</span><span class="s0">this, </span><span class="s1">Acitivity_InformacoesPessoais.</span><span class="s0">class</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">startActivity(intent)</span><span class="s0">;</span>
+        <span class="s1">finish()</span><span class="s0">;</span>
+    <span class="s1">}</span>
+<span class="s1">}</span></pre>
+</body>
+</html>
