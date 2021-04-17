@@ -55,27 +55,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/planets_spinner" />
 
-    <EditText
-        android:id="@+id/aplicador_cadastro_vacinas"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:ems="10"
-        android:hint="Aplicador da vacina"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="@+id/lote_cadastro_vacinas"
-        app:layout_constraintStart_toStartOf="@+id/lote_cadastro_vacinas"
-        app:layout_constraintTop_toBottomOf="@+id/lote_cadastro_vacinas" />
-
     <Button
         android:id="@+id/botao_cadastro_vacinas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="100dp"
         android:text="Enviar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/aplicador_cadastro_vacinas" />
+        app:layout_constraintTop_toBottomOf="@+id/lote_cadastro_vacinas" />
 
     <Spinner
         android:id="@+id/planets_spinner"

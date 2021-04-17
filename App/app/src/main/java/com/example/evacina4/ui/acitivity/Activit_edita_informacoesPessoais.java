@@ -55,6 +55,7 @@ public class Activit_edita_informacoesPessoais extends AppCompatActivity {
                     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
                     @Override
                     public void onEvent(DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException error) {
+
                         String dbNome = documentSnapshot.getString("Pessoais.Nome");
                         String dbSobrenome = documentSnapshot.getString("Pessoais.Sobrenome");
                         String dbCPF = documentSnapshot.getString("Pessoais.CPF");
@@ -80,7 +81,7 @@ public class Activit_edita_informacoesPessoais extends AppCompatActivity {
 
                 if(!(telaNome.isEmpty())){
                     db.collection("users").document(usario_key)
-                            .update("Pessoais.Ntesteome", telaNome);
+                            .update("Pessoais.Nome", telaNome);
 
                 }
                 if(!(telaSobrenome.isEmpty())){

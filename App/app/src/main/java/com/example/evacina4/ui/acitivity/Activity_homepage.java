@@ -116,6 +116,7 @@ public class Activity_homepage extends AppCompatActivity {
             Intent intent = new Intent(this, Activit_edita_informacoesPessoais.class);
             startActivity(intent);
 
+
         }
         if(  item.getItemId()==R.id.item_vacinas){
             //nada
@@ -124,6 +125,7 @@ public class Activity_homepage extends AppCompatActivity {
         if(  item.getItemId()==R.id.item_cadastrar){
             Intent intent = new Intent(this, ActivityCadastroVacina.class);
             startActivity(intent);
+
 
 
         }
