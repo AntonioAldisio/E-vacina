@@ -44,18 +44,6 @@
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <EditText
-        android:id="@+id/nome_cadastro_vacinas"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:ems="10"
-        android:hint="Nome da vacina"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="@+id/codigo_cadastro_vacinas"
-        app:layout_constraintStart_toStartOf="@+id/codigo_cadastro_vacinas"
-        app:layout_constraintTop_toBottomOf="@+id/codigo_cadastro_vacinas" />
-
-    <EditText
         android:id="@+id/lote_cadastro_vacinas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -63,10 +51,9 @@
         android:ems="10"
         android:hint="Lote"
         android:inputType="number"
-        app:layout_constraintEnd_toEndOf="@+id/nome_cadastro_vacinas"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/nome_cadastro_vacinas"
-        app:layout_constraintTop_toBottomOf="@+id/nome_cadastro_vacinas" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/planets_spinner" />
 
     <EditText
         android:id="@+id/aplicador_cadastro_vacinas"
@@ -89,5 +76,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/aplicador_cadastro_vacinas" />
+
+    <Spinner
+        android:id="@+id/planets_spinner"
+        android:layout_width="219dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/codigo_cadastro_vacinas" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

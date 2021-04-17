@@ -29,6 +29,7 @@ private Button button_entrar_inicial;
 private ProgressBar progressBar;
 private FirebaseAuth mAuth;
 private  Button recuperar_senha;
+private  Button button_sou_enfermeiro;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +41,7 @@ private  Button recuperar_senha;
         button_entrar_inicial= findViewById(R.id.button_entrar_inicial);
         activity_login_button_cadastrar= findViewById(R.id.activity_login_button_cadastrar);
         progressBar=findViewById(R.id.progressBarLogin);
+        button_sou_enfermeiro= findViewById(R.id.button_sou_enfermeiro);
         recuperar_senha= findViewById(R.id.edit_recuperar_senha);
 
         button_entrar_inicial.setOnClickListener(new View.OnClickListener() {
@@ -82,7 +84,15 @@ private  Button recuperar_senha;
             }
         });
     //
-
+//botao para cadastrar enfermeiro
+        button_sou_enfermeiro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, ActivityEnfermeiro.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
 
 

@@ -73,6 +73,32 @@ public class Activity_homepage extends AppCompatActivity {
             }
         });
 
+        db.collection("users").document(usario_key)
+                .addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+                    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
+                    @Override
+                    public void onEvent(DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException error) {
+                        String dbNome = documentSnapshot.getString("Pessoais.Nome");
+                        nomeUsario.setText(dbNome);
+
+                        String dbAplicador10V = documentSnapshot.getString("Vacinas.10V.Aplicado");
+                        String dbAplicadorBCG = documentSnapshot.getString("Vacinas.BGC.Aplicado");
+
+                        if ((dbAplicador10V == "null")) {
+                            List<String> dbAplicador = new ArrayList<>(
+                                    Arrays.asList(dbAplicador10V, dbAplicadorBCG));
+
+                            listViewAplicador.setAdapter(new ArrayAdapter<>(
+                                    Activity_homepage.this,
+                                    android.R.layout.simple_list_item_1,
+                                    dbAplicador));
+                        }
+                    }
+
+                });
+
+
+
     }
     //parte para os itens para o menu e tratamento de menu-bianca
     @Override
@@ -87,7 +113,7 @@ public class Activity_homepage extends AppCompatActivity {
 
 
         if(  item.getItemId()==R.id.item_editar){
-            Intent intent = new Intent(this, Acitivity_InformacoesPessoais.class);
+            Intent intent = new Intent(this, Activit_edita_informacoesPessoais.class);
             startActivity(intent);
 
         }
@@ -136,30 +162,6 @@ public class Activity_homepage extends AppCompatActivity {
     protected void onStart(){
         super.onStart();
         FirebaseUser currentuser = FirebaseAuth.getInstance().getCurrentUser();
-
-        db.collection("users").document(usario_key)
-                .addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
-                    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
-                    @Override
-                    public void onEvent(DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException error) {
-                        String dbNome = documentSnapshot.getString("Pessoais.Nome");
-                        nomeUsario.setText(dbNome);
-
-                        String dbAplicador10V = documentSnapshot.getString("Vacinas.10V.Aplicado");
-                        String dbAplicadorBCG = documentSnapshot.getString("Vacinas.BGC.Aplicado");
-
-                        if ((dbAplicador10V == "null")) {
-                            List<String> dbAplicador = new ArrayList<>(
-                                    Arrays.asList(dbAplicador10V, dbAplicadorBCG));
-
-                            listViewAplicador.setAdapter(new ArrayAdapter<>(
-                                    Activity_homepage.this,
-                                    android.R.layout.simple_list_item_1,
-                                    dbAplicador));
-                        }
-                    }
-
-                });
 
         if(currentuser==null){
             Intent intent = new Intent(Activity_homepage.this, MainActivity.class);

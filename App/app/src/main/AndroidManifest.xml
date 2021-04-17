@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.evacina4" >
+    package="com.example.evacina4">
 
     <application
         android:allowBackup="true"
@@ -8,13 +8,15 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Evacina4" >
-        <activity android:name=".ui.acitivity.ActivityCadastroVacina" >
-        </activity>
+        android:theme="@style/Theme.Evacina4">
+        <activity android:name=".ui.acitivity.ActivityEnfermeiro"></activity>
+        <activity android:name=".Activity_Enfermeiro" />
+        <activity android:name=".ui.acitivity.Activit_edita_informacoesPessoais" />
+        <activity android:name=".ui.acitivity.ActivityCadastroVacina" />
         <activity android:name=".ui.acitivity.Acitivity_InformacoesPessoais" />
         <activity android:name=".ui.acitivity.Activity_homepage" />
         <activity android:name=".ui.acitivity.ActivityCadastro" />
-        <activity android:name=".ui.acitivity.MainActivity" >
+        <activity android:name=".ui.acitivity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

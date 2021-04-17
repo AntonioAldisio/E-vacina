@@ -8,8 +8,29 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
+
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="cadastro_vacinas">Peça para um profissional da saude cadastrar as vacinas por meio de um codigo gerado no cadastro</string>
+    <string-array name="nome_vacinas">
+        <item>Vacinas</item>
+        <item>BCG</item>
+        <item>dTpa </item>
+        <item>Dupla Adulto </item>
+        <item>Febre Amarela </item>
+        <item>Hepatite A </item>
+        <item>Hepatite B </item>
+        <item>HPV </item>
+        <item>Meningocócica C  </item>
+        <item>Penta  </item>
+        <item>Pneumocócica 10V  </item>
+        <item>Rotavírus Humano  </item>
+        <item>Tetra Viral   </item>
+        <item>Tríplice Viral   </item>
+        <item>VIP/VOP   </item>
+
+    </string-array>
+
+
 </resources>
