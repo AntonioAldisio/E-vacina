@@ -28,6 +28,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class ActivityCadastroVacina extends AppCompatActivity {
@@ -146,7 +148,7 @@ public class ActivityCadastroVacina extends AppCompatActivity {
                         db.collection("users").document(usario_key)
                                 .update("Vacinas.BGC.Lote", loteVacina);
                         db.collection("users").document(usario_key)
-                                .update("Vacinas.BGC.Data", new Timestamp(new Date()));
+                                .update("Vacinas.BGC.Data", getDateTime());
 
                         Toast.makeText(ActivityCadastroVacina.this,
                                 "Vacina cadastra com sucesso",
@@ -160,7 +162,7 @@ public class ActivityCadastroVacina extends AppCompatActivity {
                         db.collection("users").document(usario_key)
                                 .update("Vacinas.DTpa.Lote", loteVacina);
                         db.collection("users").document(usario_key)
-                                .update("Vacinas.DTpa.Data", new Timestamp(new Date()));
+                                .update("Vacinas.DTpa.Data", getDateTime());
 
                         Toast.makeText(ActivityCadastroVacina.this,
                                 "Vacina cadastra com sucesso",
@@ -174,7 +176,7 @@ public class ActivityCadastroVacina extends AppCompatActivity {
                         db.collection("users").document(usario_key)
                                 .update("Vacinas.Dupla.Lote", loteVacina);
                         db.collection("users").document(usario_key)
-                                .update("Vacinas.Dupla.Data", new Timestamp(new Date()));
+                                .update("Vacinas.Dupla.Data", getDateTime());
 
                         Toast.makeText(ActivityCadastroVacina.this,
                                 "Vacina cadastra com sucesso",
@@ -188,7 +190,7 @@ public class ActivityCadastroVacina extends AppCompatActivity {
                         db.collection("users").document(usario_key)
                                 .update("Vacinas.FebreA.Lote", loteVacina);
                         db.collection("users").document(usario_key)
-                                .update("Vacinas.FebreA.Data", new Timestamp(new Date()));
+                                .update("Vacinas.FebreA.Data", getDateTime());
 
                         Toast.makeText(ActivityCadastroVacina.this,
                                 "Vacina cadastra com sucesso",
@@ -202,7 +204,7 @@ public class ActivityCadastroVacina extends AppCompatActivity {
                         db.collection("users").document(usario_key)
                                 .update("Vacinas.HepA.Lote", loteVacina);
                         db.collection("users").document(usario_key)
-                                .update("Vacinas.HepA.Data", new Timestamp(new Date()));
+                                .update("Vacinas.HepA.Data", getDateTime());
 
                         Toast.makeText(ActivityCadastroVacina.this,
                                 "Vacina cadastra com sucesso",
@@ -216,7 +218,7 @@ public class ActivityCadastroVacina extends AppCompatActivity {
                         db.collection("users").document(usario_key)
                                 .update("Vacinas.HepB.Lote", loteVacina);
                         db.collection("users").document(usario_key)
-                                .update("Vacinas.HepB.Data", new Timestamp(new Date()));
+                                .update("Vacinas.HepB.Data", getDateTime());
 
                         Toast.makeText(ActivityCadastroVacina.this,
                                 "Vacina cadastra com sucesso",
@@ -230,7 +232,7 @@ public class ActivityCadastroVacina extends AppCompatActivity {
                         db.collection("users").document(usario_key)
                                 .update("Vacinas.HPV.Lote", loteVacina);
                         db.collection("users").document(usario_key)
-                                .update("Vacinas.HPV.Data", new Timestamp(new Date()));
+                                .update("Vacinas.HPV.Data", getDateTime());
 
                         Toast.makeText(ActivityCadastroVacina.this,
                                 "Vacina cadastra com sucesso",
@@ -244,7 +246,7 @@ public class ActivityCadastroVacina extends AppCompatActivity {
                         db.collection("users").document(usario_key)
                                 .update("Vacinas.Men.Lote", loteVacina);
                         db.collection("users").document(usario_key)
-                                .update("Vacinas.Men.Data", new Timestamp(new Date()));
+                                .update("Vacinas.Men.Data", getDateTime());
 
                         Toast.makeText(ActivityCadastroVacina.this,
                                 "Vacina cadastra com sucesso",
@@ -258,7 +260,7 @@ public class ActivityCadastroVacina extends AppCompatActivity {
                         db.collection("users").document(usario_key)
                                 .update("Vacinas.Penta.Lote", loteVacina);
                         db.collection("users").document(usario_key)
-                                .update("Vacinas.Penta.Data", new Timestamp(new Date()));
+                                .update("Vacinas.Penta.Data", getDateTime());
 
                         Toast.makeText(ActivityCadastroVacina.this,
                                 "Vacina cadastra com sucesso",
@@ -272,7 +274,7 @@ public class ActivityCadastroVacina extends AppCompatActivity {
                         db.collection("users").document(usario_key)
                                 .update("Vacinas.10V.Lote", loteVacina);
                         db.collection("users").document(usario_key)
-                                .update("Vacinas.10V.Data", new Timestamp(new Date()));
+                                .update("Vacinas.10V.Data", getDateTime());
 
                         Toast.makeText(ActivityCadastroVacina.this,
                                 "Vacina cadastra com sucesso",
@@ -286,7 +288,7 @@ public class ActivityCadastroVacina extends AppCompatActivity {
                         db.collection("users").document(usario_key)
                                 .update("Vacinas.Rotavirus.Lote", loteVacina);
                         db.collection("users").document(usario_key)
-                                .update("Vacinas.Rotavirus.Data", new Timestamp(new Date()));
+                                .update("Vacinas.Rotavirus.Data", getDateTime());
 
                         Toast.makeText(ActivityCadastroVacina.this,
                                 "Vacina cadastra com sucesso",
@@ -300,7 +302,7 @@ public class ActivityCadastroVacina extends AppCompatActivity {
                         db.collection("users").document(usario_key)
                                 .update("Vacinas.Tetra.Lote", loteVacina);
                         db.collection("users").document(usario_key)
-                                .update("Vacinas.Tetra.Data", new Timestamp(new Date()));
+                                .update("Vacinas.Tetra.Data", getDateTime());
 
                         Toast.makeText(ActivityCadastroVacina.this,
                                 "Vacina cadastra com sucesso",
@@ -314,7 +316,7 @@ public class ActivityCadastroVacina extends AppCompatActivity {
                         db.collection("users").document(usario_key)
                                 .update("Vacinas.Triplice.Lote", loteVacina);
                         db.collection("users").document(usario_key)
-                                .update("Vacinas.Triplice.Data", new Timestamp(new Date()));
+                                .update("Vacinas.Triplice.Data", getDateTime());
 
                         Toast.makeText(ActivityCadastroVacina.this,
                                 "Vacina cadastra com sucesso",
@@ -327,7 +329,7 @@ public class ActivityCadastroVacina extends AppCompatActivity {
                         db.collection("users").document(usario_key)
                                 .update("Vacinas.Vip.Lote", loteVacina);
                         db.collection("users").document(usario_key)
-                                .update("Vacinas.Vip.Data", new Timestamp(new Date()));
+                                .update("Vacinas.Vip.Data", getDateTime());
 
                         Toast.makeText(ActivityCadastroVacina.this,
                                 "Vacina cadastra com sucesso",
@@ -342,4 +344,10 @@ public class ActivityCadastroVacina extends AppCompatActivity {
 
         });
     }
+    private String getDateTime() {
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        Date date = new Date();
+        return dateFormat.format(date);
+    }
+
 }

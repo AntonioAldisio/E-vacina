@@ -73,6 +73,7 @@
         android:outlineSpotShadowColor="#F2994A"
         android:text="Confirmar cadastro"
         android:textColor="@color/white"
+        app:backgroundTint="#F2994A"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.493"
@@ -89,6 +90,7 @@
         android:background="#F2994A"
         android:text="Entrar"
         android:textColor="@color/white"
+        app:backgroundTint="#F2994A"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
@@ -100,10 +102,11 @@
         android:layout_width="300dp"
         android:layout_height="42dp"
         android:indeterminate="true"
-        android:indeterminateTint="@color/white"
+        android:indeterminateTint="#FF5722"
         android:visibility="invisible"
-        tools:layout_editor_absoluteX="55dp"
-        tools:layout_editor_absoluteY="514dp"
+        app:layout_constraintBottom_toTopOf="@+id/activity_cadastro_input_email"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints" />
 
     <EditText

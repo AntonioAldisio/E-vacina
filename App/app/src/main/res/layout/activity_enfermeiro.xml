@@ -32,10 +32,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintTop_toBottomOf="@+id/textVacina" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/textVacina"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -71,10 +71,10 @@
         app:layout_constraintEnd_toEndOf="@+id/coren_enfermeiro"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/coren_enfermeiro"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+        app:layout_constraintTop_toBottomOf="@+id/textLote" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/textLote"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -92,6 +92,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="Confirmar"
+        app:backgroundTint="#F2994A"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
