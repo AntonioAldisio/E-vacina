@@ -5,16 +5,20 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.solver.widgets.analyzer.VerticalWidgetRun;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.pdf.PdfDocument;
+import android.icu.lang.UCharacter;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
@@ -71,10 +75,8 @@ public class Activity_homepage extends AppCompatActivity {
     private List<String> dbVacina;
     //para pdf
     private Button button_PDF;
-    private TextView textVacina;
-    private TextView textData;
-    private TextView textLote;
-    private TextView textAplicador;
+    private Bitmap imagem, iamgemEscala;
+
     //
 
 
@@ -86,12 +88,10 @@ public class Activity_homepage extends AppCompatActivity {
         button_sair = findViewById(R.id.button_logout);
         nomeUsario = findViewById(R.id.home_activity_teste);
         button_PDF= findViewById(R.id.button_PDF);
-        //text view para exportar para pdf
-        textVacina = findViewById(R.id.textVacina);
-        textData = findViewById(R.id.textData);
-        textLote = findViewById(R.id.textLote);
-        textAplicador = findViewById(R.id.textAplicador);
-        //
+        imagem= BitmapFactory.decodeResource(getResources(), R.drawable.logo_png);
+        iamgemEscala= Bitmap.createScaledBitmap(imagem, 92,92,false);
+
+
 
         listViewVacina = findViewById(R.id.acitiviy_list_view_vacina);
         listViewAplicador = findViewById(R.id.acitiviy_list_view_aplicador);
@@ -655,7 +655,7 @@ public class Activity_homepage extends AppCompatActivity {
         //
 
     }
-    //criar pagina PDF
+    //criar cartao PDF
     private void createPDF() {
    button_PDF.setOnClickListener(new View.OnClickListener() {
 
@@ -664,25 +664,96 @@ public class Activity_homepage extends AppCompatActivity {
        public void onClick(View view) {
            PdfDocument pdfDocument= new PdfDocument();
            Paint paint= new Paint();
-           PdfDocument.PageInfo pageInfo= new PdfDocument.PageInfo.Builder(250,400,1).create();
+           PdfDocument.PageInfo pageInfo= new PdfDocument.PageInfo.Builder(400,500,1).create();
            PdfDocument.Page page= pdfDocument.startPage(pageInfo);
            Canvas canvas= page.getCanvas();
-           canvas.drawText("Vacinas tomadas", 80,42,paint);
+           paint.setColor(Color.rgb(253, 141, 39));
+           canvas.drawRect(0,0,400,500,paint);
+           canvas.drawBitmap(iamgemEscala,290,400,paint);
+           paint.setTextSize(22);
+           canvas.drawText("Vacinas tomadas", 100,42,paint);
            paint.setStyle(Paint.Style.STROKE);
            paint.setStrokeWidth(2);
-           canvas.drawRect(12,55,245,380,paint);
-           canvas.drawLine(12, 75, 245, 75, paint);
+           paint.setColor(Color.BLACK);
+           canvas.drawRect(12,55,395,380,paint);
+           canvas.drawLine(12, 75, 395, 75, paint);
            paint.setTextAlign(Paint.Align.LEFT);
            paint.setStyle(Paint.Style.FILL);
-           canvas.drawText("Vacinas",22,70,paint);
-           canvas.drawText("Data",92,70,paint);
-           canvas.drawText("Lote",138,70,paint);
-           canvas.drawText("Aplicador",180,70,paint);
+           paint.setTextSize(18);
 
-            paint.setStrokeWidth(1);
-           canvas.drawLine(82,55,82,380, paint);
-           canvas.drawLine(128,55,128,380, paint);
+           canvas.drawText("Vacinas",22,70,paint);
+           canvas.drawText("Data",112,70,paint);
+           canvas.drawText("Lote",178,70,paint);
+           canvas.drawText("Aplicador",245,70,paint);
+           paint.setTextSize(13);
+           //coluna das vacinas
+           paint.setColor(Color.BLACK);
+
+           canvas.drawText("Dupla", 22, 90,paint);
+           canvas.drawText("BGC", 22, 110,paint);
+           canvas.drawText("DTPA", 22, 130,paint);
+           canvas.drawText("Febre A", 22, 150,paint);
+           canvas.drawText("HepA", 22, 170,paint);
+           canvas.drawText("HepB", 22, 190,paint);
+           canvas.drawText("HPV", 22, 210,paint);
+           canvas.drawText("Meningite", 22, 230,paint);
+           canvas.drawText("Penta", 22, 250,paint);
+           canvas.drawText("10V", 22, 270,paint);
+           canvas.drawText("Rotavirus", 22, 290,paint);
+           canvas.drawText("Tetra", 22, 310,paint);
+           canvas.drawText("Triplice", 22, 330,paint);
+           canvas.drawText("Vip", 22, 350,paint);
+           paint.setStrokeWidth(1);
+           canvas.drawLine(110,55,110,380, paint);
            canvas.drawLine(170,55,170,380, paint);
+           canvas.drawLine(243,55,243,380, paint);
+           //coluna do lote
+           canvas.drawText(dbALote.get(0),178,90,paint);
+           canvas.drawText(dbALote.get(1),178, 110, paint);
+           canvas.drawText(dbALote.get(2),178, 130, paint);
+           canvas.drawText(dbALote.get(3),178, 150, paint);
+           canvas.drawText(dbALote.get(4),178, 170, paint);
+           canvas.drawText(dbALote.get(5),178, 190, paint);
+           canvas.drawText(dbALote.get(6),178, 210, paint);
+           canvas.drawText(dbALote.get(7),178, 230, paint);
+           canvas.drawText(dbALote.get(8),178, 250, paint);
+           canvas.drawText(dbALote.get(9),178, 270, paint);
+           canvas.drawText(dbALote.get(10),178, 290, paint);
+           canvas.drawText(dbALote.get(11),178, 310, paint);
+           canvas.drawText(dbALote.get(12),178, 330, paint);
+           canvas.drawText(dbALote.get(13),178, 350, paint);
+           //coluna da data
+
+           canvas.drawText(dbData.get(0).substring(0,4),112,90,paint);
+          canvas.drawText(dbData.get(1).substring(0,4),112,110,paint);
+           canvas.drawText(dbData.get(2).substring(0,4),112,130,paint);
+           canvas.drawText(dbData.get(3).substring(0,4),112,150,paint);
+           canvas.drawText(dbData.get(4).substring(0,4),112,170,paint);
+           canvas.drawText(dbData.get(5).substring(0,4),112,190,paint);
+           canvas.drawText(dbData.get(6).substring(0,4),112,210,paint);
+           canvas.drawText(dbData.get(7).substring(0,4),112,230,paint);
+           canvas.drawText(dbData.get(8).substring(0,4),112,250,paint);
+           canvas.drawText(dbData.get(9).substring(0,4),112,270,paint);
+           canvas.drawText(dbData.get(10).substring(0,4),112,290,paint);
+           canvas.drawText(dbData.get(11).substring(0,4),112,310,paint);
+           canvas.drawText(dbData.get(12).substring(0,4),112,330,paint);
+           canvas.drawText(dbData.get(13).substring(0,4),112,350,paint);
+            //coluna do aplicador
+           paint.setTextSize(10);
+           canvas.drawText(dbAplicador.get(0),245,90 ,paint);
+           canvas.drawText(dbAplicador.get(1),245,110,paint);
+           canvas.drawText(dbAplicador.get(2),245,130 ,paint);
+           canvas.drawText(dbAplicador.get(3),245,150 ,paint);
+           canvas.drawText(dbAplicador.get(4),245,170 ,paint);
+           canvas.drawText(dbAplicador.get(5),245,190 ,paint);
+           canvas.drawText(dbAplicador.get(6),245,210 ,paint);
+           canvas.drawText(dbAplicador.get(7),245,230 ,paint);
+           canvas.drawText(dbAplicador.get(8),245,250 ,paint);
+           canvas.drawText(dbAplicador.get(9),245,270 ,paint);
+           canvas.drawText(dbAplicador.get(10),245,290 ,paint);
+           canvas.drawText(dbAplicador.get(11),245,310 ,paint);
+           canvas.drawText(dbAplicador.get(12),245,330 ,paint);
+           canvas.drawText(dbAplicador.get(13),245,350 ,paint);
 
 
            pdfDocument.finishPage(page);
@@ -691,7 +762,7 @@ public class Activity_homepage extends AppCompatActivity {
                pdfDocument.writeTo(new FileOutputStream(file));
                Toast.makeText(Activity_homepage.this, "Baixado em seus arquivos- armazenamento interno", Toast.LENGTH_LONG).show();
            } catch (IOException e) {
-               Toast.makeText(Activity_homepage.this, "Erro", Toast.LENGTH_LONG).show();
+               Toast.makeText(Activity_homepage.this, "Erro!, verifique as permissoes e se possui armazenamento interno suficiente", Toast.LENGTH_LONG).show();
                e.printStackTrace();
            }
             pdfDocument.close();
@@ -700,7 +771,7 @@ public class Activity_homepage extends AppCompatActivity {
 
 
     }
-    //
+    //fim do cartao
 
     //parte para os itens para o menu e tratamento de menu-bianca
     @Override

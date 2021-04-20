@@ -151,7 +151,6 @@
         android:layout_width="300dp"
         android:layout_height="42dp"
 
-        android:background="#F2994A"
         android:indeterminate="true"
         android:indeterminateTint="#FF5722"
         android:visibility="invisible"
