@@ -1,4 +1,4 @@
-package com.example.evacina4;
+package com.example.Evacina;
 
 import org.junit.Test;
 

@@ -30,7 +30,7 @@
         app:layout_constraintTop_toBottomOf="@+id/activity_login_logo2" />
 
     <EditText
-        android:id="@+id/activity_cadastro_input_email"
+        android:id="@+id/acitivityCadastro_input_email"
         android:layout_width="300dp"
         android:layout_height="41dp"
         android:layout_marginStart="16dp"
@@ -46,7 +46,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/activity_cadastro_input_password_confirmar"
+        android:id="@+id/acitivityCadastro_input_senha_confirmar"
         android:layout_width="300dp"
         android:layout_height="41dp"
         android:layout_marginStart="16dp"
@@ -59,10 +59,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/activity_cadastro_input_password" />
+        app:layout_constraintTop_toBottomOf="@+id/acitivityCadastro_input_password" />
 
     <Button
-        android:id="@+id/activity_login_button_confirmar"
+        android:id="@+id/acitivityCadastro_button_confirmar"
         android:layout_width="300dp"
         android:layout_height="42dp"
         android:layout_marginStart="16dp"
@@ -78,23 +78,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/activity_cadastro_input_password_confirmar" />
-
-    <Button
-        android:id="@+id/button_entrar_inicial"
-        android:layout_width="300dp"
-        android:layout_height="42dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:background="#F2994A"
-        android:text="Entrar"
-        android:textColor="@color/white"
-        app:backgroundTint="#F2994A"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.506"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/activity_login_button_confirmar" />
+        app:layout_constraintTop_toBottomOf="@+id/acitivityCadastro_input_senha_confirmar" />
 
 
     <ProgressBar
@@ -104,13 +88,13 @@
         android:indeterminate="true"
         android:indeterminateTint="#FF5722"
         android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@+id/activity_cadastro_input_email"
+        app:layout_constraintBottom_toTopOf="@+id/acitivityCadastro_input_email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints" />
 
     <EditText
-        android:id="@+id/activity_cadastro_input_password"
+        android:id="@+id/acitivityCadastro_input_password"
         android:layout_width="300dp"
         android:layout_height="41dp"
         android:layout_marginStart="16dp"
@@ -123,6 +107,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/activity_cadastro_input_email" />
+        app:layout_constraintTop_toBottomOf="@+id/acitivityCadastro_input_email" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

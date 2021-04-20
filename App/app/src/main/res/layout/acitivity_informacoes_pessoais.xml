@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.acitivity.Activit_edita_informacoesPessoais">
+    tools:context=".ui.acitivity.ActivityInformacoesPessoais">
 
     <TextView
         android:id="@+id/textView"
@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editor_Informacoes_Pessoais_input_nome"
+        android:id="@+id/Acitivity_Informacoes_Pessoais_input_nome"
         android:layout_width="365dp"
         android:layout_height="46dp"
         android:layout_marginStart="16dp"
@@ -37,12 +37,12 @@
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <EditText
-        android:id="@+id/editor_informacoes_Pessoais_input_sobreNome"
+        android:id="@+id/Acitivity_Informacoes_Pessoais_input_sobrenome"
         android:layout_width="365dp"
         android:layout_height="46dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="25dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:ems="10"
@@ -52,24 +52,46 @@
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editor_Informacoes_Pessoais_input_nome" />
+        app:layout_constraintTop_toBottomOf="@+id/Acitivity_Informacoes_Pessoais_input_nome" />
 
     <EditText
-        android:id="@+id/editor_informacoes_Pessoais_input_Endereco"
+        android:id="@+id/Acitivity_Informacoes_Pessoais_input_CPF"
         android:layout_width="365dp"
         android:layout_height="46dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:ems="10"
+        android:hint="CPF"
+        android:inputType="textPersonName"
+        android:textColor="#F2994A"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Acitivity_Informacoes_Pessoais_input_data_aniversario" />
+
+    <EditText
+        android:id="@+id/Acitivity_Informacoes_Pessoais_input_Endereco"
+        android:layout_width="365dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
         android:ems="10"
         android:hint="Endereço"
         android:inputType="textPersonName"
         android:textColor="#F2994A"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/editor_informacoes_Pessoais_input_CPF"
-        app:layout_constraintStart_toStartOf="@+id/editor_informacoes_Pessoais_input_CPF"
-        app:layout_constraintTop_toBottomOf="@+id/editor_informacoes_Pessoais_input_CPF" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Acitivity_Informacoes_Pessoais_input_CPF" />
 
     <Button
-        android:id="@+id/editor_informacoes_button_salva"
+        android:id="@+id/Acitivity_Informacoes_Pessoais_button_salva"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -81,15 +103,15 @@
         app:backgroundTint="#F2994A"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editor_informacoes_Pessoais_input_Endereco" />
+        app:layout_constraintTop_toBottomOf="@+id/Acitivity_Informacoes_Pessoais_input_Endereco" />
 
     <EditText
-        android:id="@+id/editor_informacoes_Pessoais_input_data_aniversario"
+        android:id="@+id/Acitivity_Informacoes_Pessoais_input_data_aniversario"
         android:layout_width="365dp"
         android:layout_height="46dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="25dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:ems="10"
@@ -98,19 +120,6 @@
         android:textColor="#F2994A"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editor_informacoes_Pessoais_input_sobreNome" />
-
-    <EditText
-        android:id="@+id/editor_informacoes_Pessoais_input_CPF"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:ems="10"
-        android:hint="CPF"
-        android:inputType="number"
-        app:layout_constraintEnd_toEndOf="@+id/editor_informacoes_Pessoais_input_data_aniversario"
-        app:layout_constraintStart_toStartOf="@+id/editor_informacoes_Pessoais_input_data_aniversario"
-        app:layout_constraintTop_toBottomOf="@+id/editor_informacoes_Pessoais_input_data_aniversario" />
-
+        app:layout_constraintTop_toBottomOf="@+id/Acitivity_Informacoes_Pessoais_input_sobrenome" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,7 +5,7 @@
     android:id="@+id/button_sair"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.acitivity.Activity_homepage">
+    tools:context=".ui.acitivity.ActivityHomePage">
 
 
     <TextView
@@ -22,7 +22,7 @@
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textLote"
-        app:layout_constraintTop_toBottomOf="@+id/home_activity_teste" />
+        app:layout_constraintTop_toBottomOf="@+id/Activity_homepage_textview_nome_cliente" />
 
     <TextView
         android:id="@+id/textLote"
@@ -35,10 +35,10 @@
         android:textColor="#F2994A"
         android:textSize="18sp"
         app:layout_constraintStart_toEndOf="@+id/textData"
-        app:layout_constraintTop_toBottomOf="@+id/home_activity_teste" />
+        app:layout_constraintTop_toBottomOf="@+id/Activity_homepage_textview_nome_cliente" />
 
     <Button
-        android:id="@+id/button_logout"
+        android:id="@+id/Activity_homepage_button_sair"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="17dp"
@@ -47,12 +47,12 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.958"
-        app:layout_constraintStart_toEndOf="@+id/button_PDF"
-        app:layout_constraintTop_toBottomOf="@+id/acitiviy_list_view_aplicador"
+        app:layout_constraintStart_toEndOf="@+id/Activity_homepage_button_PDF"
+        app:layout_constraintTop_toBottomOf="@+id/Activity_homepage_listview_aplicador"
         app:layout_constraintVertical_bias="1.0" />
 
     <TextView
-        android:id="@+id/home_activity_teste"
+        android:id="@+id/Activity_homepage_textview_nome_cliente"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -94,7 +94,7 @@
         android:textColor="#F2994A"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/home_activity_teste" />
+        app:layout_constraintTop_toBottomOf="@+id/Activity_homepage_textview_nome_cliente" />
 
     <TextView
         android:id="@+id/textData"
@@ -107,10 +107,10 @@
         android:textColor="#F2994A"
         android:textSize="18sp"
         app:layout_constraintStart_toEndOf="@+id/textVacina"
-        app:layout_constraintTop_toBottomOf="@+id/home_activity_teste" />
+        app:layout_constraintTop_toBottomOf="@+id/Activity_homepage_textview_nome_cliente" />
 
     <ListView
-        android:id="@+id/acitiviy_list_view_aplicador"
+        android:id="@+id/Activity_homepage_listview_aplicador"
         android:layout_width="86dp"
         android:layout_height="404dp"
         android:layout_marginTop="25dp"
@@ -120,27 +120,27 @@
         app:layout_constraintTop_toBottomOf="@+id/textAplicador" />
 
     <ListView
-        android:id="@+id/acitiviy_list_view_lote"
+        android:id="@+id/Activity_homepage_listview_lote"
         android:layout_width="86dp"
         android:layout_height="404dp"
         android:layout_marginTop="25dp"
         android:layout_marginEnd="25dp"
         android:layout_marginRight="25dp"
-        app:layout_constraintEnd_toStartOf="@+id/acitiviy_list_view_aplicador"
+        app:layout_constraintEnd_toStartOf="@+id/Activity_homepage_listview_aplicador"
         app:layout_constraintTop_toBottomOf="@+id/textLote" />
 
     <ListView
-        android:id="@+id/acitiviy_list_view_data"
+        android:id="@+id/Activity_homepage_listview_data"
         android:layout_width="60dp"
         android:layout_height="404dp"
         android:layout_marginTop="25dp"
         android:layout_marginEnd="25dp"
         android:layout_marginRight="25dp"
-        app:layout_constraintEnd_toStartOf="@+id/acitiviy_list_view_lote"
+        app:layout_constraintEnd_toStartOf="@+id/Activity_homepage_listview_lote"
         app:layout_constraintTop_toBottomOf="@+id/textData" />
 
     <ListView
-        android:id="@+id/acitiviy_list_view_vacina"
+        android:id="@+id/Activity_homepage_listview_vacina"
         android:layout_width="86dp"
         android:layout_height="404dp"
         android:layout_marginStart="16dp"
@@ -150,7 +150,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textVacina" />
 
     <Button
-        android:id="@+id/button_PDF"
+        android:id="@+id/Activity_homepage_button_PDF"
         android:layout_width="90dp"
         android:layout_height="48dp"
         android:layout_marginStart="20dp"
@@ -160,7 +160,7 @@
         app:backgroundTint="#F2994A"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/acitiviy_list_view_vacina"
+        app:layout_constraintTop_toBottomOf="@+id/Activity_homepage_listview_vacina"
         app:layout_constraintVertical_bias="1.0" />
 
 

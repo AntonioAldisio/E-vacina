@@ -1,4 +1,4 @@
-package com.example.evacina4.regras;
+package com.example.Evacina.regras;
 
 import java.util.InputMismatchException;
 

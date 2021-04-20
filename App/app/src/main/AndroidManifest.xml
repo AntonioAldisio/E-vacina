@@ -1,24 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.evacina4">
+    package="com.example.Evacina">
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:icon="@mipmap/logo"
+        android:label="E-Vacina"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Evacina4">
-        <activity android:name=".ui.acitivity.ActivityEnfermeiro"></activity>
-        <activity android:name=".Activity_Enfermeiro" />
-        <activity android:name=".ui.acitivity.Activit_edita_informacoesPessoais" />
-        <activity android:name=".ui.acitivity.ActivityCadastroVacina" />
-        <activity android:name=".ui.acitivity.Acitivity_InformacoesPessoais" />
-        <activity android:name=".ui.acitivity.Activity_homepage" />
-        <activity android:name=".ui.acitivity.ActivityCadastro" />
-        <activity android:name=".ui.acitivity.MainActivity">
+        <activity android:name="com.example.Evacina.ui.acitivity.ActivityEnfermeiro"></activity>
+        <activity android:name="com.example.Evacina.ui.acitivity.ActivityInformacoesPessoiasEdicao" />
+        <activity android:name="com.example.Evacina.ui.acitivity.ActivityCadastroVacina" />
+        <activity android:name="com.example.Evacina.ui.acitivity.ActivityInformacoesPessoais" />
+        <activity android:name="com.example.Evacina.ui.acitivity.ActivityHomePage" />
+        <activity android:name="com.example.Evacina.ui.acitivity.ActivityCadastro" />
+        <activity android:name="com.example.Evacina.ui.acitivity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -18,7 +18,7 @@
         app:srcCompat="@drawable/logo" />
 
     <EditText
-        android:id="@+id/nome_enfermeiro"
+        android:id="@+id/activity_enfermeiro_nome_enfermeiro"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -48,19 +48,19 @@
         app:layout_constraintTop_toBottomOf="@+id/activity_login_logo3" />
 
     <EditText
-        android:id="@+id/coren_enfermeiro"
+        android:id="@+id/activity_enfermeiro_coren_enfermeiro"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:ems="10"
         android:hint="COREN"
         android:inputType="number"
-        app:layout_constraintEnd_toEndOf="@+id/nome_enfermeiro"
-        app:layout_constraintStart_toStartOf="@+id/nome_enfermeiro"
-        app:layout_constraintTop_toBottomOf="@+id/nome_enfermeiro" />
+        app:layout_constraintEnd_toEndOf="@+id/activity_enfermeiro_nome_enfermeiro"
+        app:layout_constraintStart_toStartOf="@+id/activity_enfermeiro_nome_enfermeiro"
+        app:layout_constraintTop_toBottomOf="@+id/activity_enfermeiro_nome_enfermeiro" />
 
     <EditText
-        android:id="@+id/codigo_enfermeiro"
+        android:id="@+id/activity_enfermeiro_codigo_enfermeiro"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -68,9 +68,9 @@
         android:hint="Codigo"
         android:inputType="number"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/coren_enfermeiro"
+        app:layout_constraintEnd_toEndOf="@+id/activity_enfermeiro_coren_enfermeiro"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/coren_enfermeiro"
+        app:layout_constraintStart_toStartOf="@+id/activity_enfermeiro_coren_enfermeiro"
         app:layout_constraintTop_toBottomOf="@+id/textLote" />
 
     <TextView
@@ -83,11 +83,11 @@
         android:text="Por favor, escolha um numero para ser seu codigo para cadastrar vacinas tomadas dos pacientes"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/coren_enfermeiro"
-        app:layout_constraintTop_toBottomOf="@+id/coren_enfermeiro" />
+        app:layout_constraintStart_toStartOf="@+id/activity_enfermeiro_coren_enfermeiro"
+        app:layout_constraintTop_toBottomOf="@+id/activity_enfermeiro_coren_enfermeiro" />
 
     <Button
-        android:id="@+id/button_enfermeiro"
+        android:id="@+id/activity_enfermeiro_button_enfermeiro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -96,5 +96,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/codigo_enfermeiro" />
+        app:layout_constraintTop_toBottomOf="@+id/activity_enfermeiro_codigo_enfermeiro" />
 </androidx.constraintlayout.widget.ConstraintLayout>

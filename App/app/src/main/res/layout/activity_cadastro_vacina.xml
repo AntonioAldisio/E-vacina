@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/codigo_cadastro_vacinas"
+        android:id="@+id/activity_cadastro_vacina_input_codigo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -38,13 +38,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Peça para um profissional da saude cadastrar as vacinas tomadas por meio de um codigo criado para ele na hora do cadastro"
-        app:layout_constraintEnd_toEndOf="@+id/codigo_cadastro_vacinas"
+        app:layout_constraintEnd_toEndOf="@+id/activity_cadastro_vacina_input_codigo"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/codigo_cadastro_vacinas"
+        app:layout_constraintStart_toStartOf="@+id/activity_cadastro_vacina_input_codigo"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <EditText
-        android:id="@+id/lote_cadastro_vacinas"
+        android:id="@+id/activity_cadastro_vacina_input_lote"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -53,10 +53,10 @@
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/planets_spinner" />
+        app:layout_constraintTop_toBottomOf="@+id/activity_cadastro_vacina_input_spineer" />
 
     <Button
-        android:id="@+id/botao_cadastro_vacinas"
+        android:id="@+id/activity_cadastro_vacina_button_cadastro_vacinas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
@@ -64,15 +64,15 @@
         app:backgroundTint="#F2994A"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lote_cadastro_vacinas" />
+        app:layout_constraintTop_toBottomOf="@+id/activity_cadastro_vacina_input_lote" />
 
     <Spinner
-        android:id="@+id/planets_spinner"
+        android:id="@+id/activity_cadastro_vacina_input_spineer"
         android:layout_width="219dp"
         android:layout_height="48dp"
         android:layout_marginTop="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/codigo_cadastro_vacinas" />
+        app:layout_constraintTop_toBottomOf="@+id/activity_cadastro_vacina_input_codigo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

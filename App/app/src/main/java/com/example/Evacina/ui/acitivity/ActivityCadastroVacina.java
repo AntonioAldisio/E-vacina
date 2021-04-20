@@ -1,13 +1,10 @@
-package com.example.evacina4.ui.acitivity;
+package com.example.Evacina.ui.acitivity;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -15,15 +12,10 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.example.evacina4.R;
+import com.example.Evacina.R;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -35,23 +27,24 @@ import java.util.Date;
 public class ActivityCadastroVacina extends AppCompatActivity {
 
     private String usario_key = FirebaseAuth.getInstance().getUid();
-    private EditText codigo_cadastro_vacinas;
-    private EditText lote_cadastro_vacinas;
+    private EditText activity_cadastro_vacina_input_codigo;
+    private EditText activity_cadastro_vacina_input_lote;
+    private Spinner activity_cadastro_vacina_input_spineer;
 
     //private Map<String, Object> informacoesAplicador = new HashMap<String, Object>();
     private String funcionario_key;
     private String nomeAplicador;
     private boolean codigoValido = false;
 
-    private Button salvarVacina;
+    private Button activity_cadastro_vacina_button_cadastro_vacinas;
 
     private static final String TAG = "Aqui";
 
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-    private void toHome() {
-        Intent intent = new Intent(this, Activity_homepage.class);
+    private void ActivityCadastroVacina2ActivityHomePage() {
+        Intent intent = new Intent(this, ActivityHomePage.class);
         startActivity(intent);
         finish();
 
@@ -61,6 +54,7 @@ public class ActivityCadastroVacina extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_vacina);
+        ActivityCadastroVacinaBuscaId();
 
 
     }
@@ -68,47 +62,33 @@ public class ActivityCadastroVacina extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        salvarVacina = findViewById(R.id.botao_cadastro_vacinas);
-        codigo_cadastro_vacinas = findViewById(R.id.codigo_cadastro_vacinas);
-        Spinner nome_cadastro_vacinas = (Spinner) findViewById(R.id.planets_spinner);
-        lote_cadastro_vacinas = findViewById(R.id.lote_cadastro_vacinas);
+        //Organizar Spinner
+        SteupVacina();
 
-
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.nome_vacinas, android.R.layout.simple_spinner_item);
-        // Specify the layout to use when the list of choices appears
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        // Apply the adapter to the spinne
-        nome_cadastro_vacinas.setAdapter(adapter);
-
-
-        salvarVacina.setOnClickListener(new View.OnClickListener() {
+        activity_cadastro_vacina_button_cadastro_vacinas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+                String codigo = activity_cadastro_vacina_input_codigo.getText().toString().trim();
+                String loteVacina = activity_cadastro_vacina_input_lote.getText().toString().trim();
 
-                String codigo = codigo_cadastro_vacinas.getText().toString().trim();
-                String loteVacina = lote_cadastro_vacinas.getText().toString().trim();
-
-
-                boolean vazio = (Boolean) (nome_cadastro_vacinas.getSelectedItemPosition() == 0);
-                //boolean camposVazio = (Boolean) (codigo.isEmpty() || loteVacina.isEmpty());
                 boolean camposVazio = false;
 
-                boolean bgc = (Boolean) (nome_cadastro_vacinas.getSelectedItemPosition() == 1);
-                boolean dTpa = (Boolean) (nome_cadastro_vacinas.getSelectedItemPosition() == 2);
-                boolean Dupla = (Boolean) (nome_cadastro_vacinas.getSelectedItemPosition() == 3);
-                boolean Febre = (Boolean) (nome_cadastro_vacinas.getSelectedItemPosition() == 4);
-                boolean HepA = (Boolean) (nome_cadastro_vacinas.getSelectedItemPosition() == 5);
-                boolean HepB = (Boolean) (nome_cadastro_vacinas.getSelectedItemPosition() == 6);
-                boolean HPV = (Boolean) (nome_cadastro_vacinas.getSelectedItemPosition() == 7);
-                boolean MegC = (Boolean) (nome_cadastro_vacinas.getSelectedItemPosition() == 8);
-                boolean Penta = (Boolean) (nome_cadastro_vacinas.getSelectedItemPosition() == 9);
-                boolean Penv = (Boolean) (nome_cadastro_vacinas.getSelectedItemPosition() == 10);
-                boolean Rotavirus = (Boolean) (nome_cadastro_vacinas.getSelectedItemPosition() == 11);
-                boolean Tetra = (Boolean) (nome_cadastro_vacinas.getSelectedItemPosition() == 12);
-                boolean Triplice = (Boolean) (nome_cadastro_vacinas.getSelectedItemPosition() == 13);
-                boolean Vip = (Boolean) (nome_cadastro_vacinas.getSelectedItemPosition() == 14);
+                boolean vazio = (Boolean) (activity_cadastro_vacina_input_spineer.getSelectedItemPosition() == 0);
+                boolean bgc = (Boolean) (activity_cadastro_vacina_input_spineer.getSelectedItemPosition() == 1);
+                boolean dTpa = (Boolean) (activity_cadastro_vacina_input_spineer.getSelectedItemPosition() == 2);
+                boolean Dupla = (Boolean) (activity_cadastro_vacina_input_spineer.getSelectedItemPosition() == 3);
+                boolean Febre = (Boolean) (activity_cadastro_vacina_input_spineer.getSelectedItemPosition() == 4);
+                boolean HepA = (Boolean) (activity_cadastro_vacina_input_spineer.getSelectedItemPosition() == 5);
+                boolean HepB = (Boolean) (activity_cadastro_vacina_input_spineer.getSelectedItemPosition() == 6);
+                boolean HPV = (Boolean) (activity_cadastro_vacina_input_spineer.getSelectedItemPosition() == 7);
+                boolean MegC = (Boolean) (activity_cadastro_vacina_input_spineer.getSelectedItemPosition() == 8);
+                boolean Penta = (Boolean) (activity_cadastro_vacina_input_spineer.getSelectedItemPosition() == 9);
+                boolean Penv = (Boolean) (activity_cadastro_vacina_input_spineer.getSelectedItemPosition() == 10);
+                boolean Rotavirus = (Boolean) (activity_cadastro_vacina_input_spineer.getSelectedItemPosition() == 11);
+                boolean Tetra = (Boolean) (activity_cadastro_vacina_input_spineer.getSelectedItemPosition() == 12);
+                boolean Triplice = (Boolean) (activity_cadastro_vacina_input_spineer.getSelectedItemPosition() == 13);
+                boolean Vip = (Boolean) (activity_cadastro_vacina_input_spineer.getSelectedItemPosition() == 14);
 
 
                 if (!codigo.isEmpty()) {
@@ -150,10 +130,7 @@ public class ActivityCadastroVacina extends AppCompatActivity {
                         db.collection("users").document(usario_key)
                                 .update("Vacinas.BGC.Data", getDateTime());
 
-                        Toast.makeText(ActivityCadastroVacina.this,
-                                "Vacina cadastra com sucesso",
-                                Toast.LENGTH_LONG).show();
-                        toHome();
+                        VacinaCadastrada();
                     }
 
                     if (dTpa && codigoValido && !camposVazio) {
@@ -164,10 +141,7 @@ public class ActivityCadastroVacina extends AppCompatActivity {
                         db.collection("users").document(usario_key)
                                 .update("Vacinas.DTpa.Data", getDateTime());
 
-                        Toast.makeText(ActivityCadastroVacina.this,
-                                "Vacina cadastra com sucesso",
-                                Toast.LENGTH_LONG).show();
-                        toHome();
+                        VacinaCadastrada();
                     }
 
                     if (Dupla && codigoValido && !camposVazio) {
@@ -178,10 +152,7 @@ public class ActivityCadastroVacina extends AppCompatActivity {
                         db.collection("users").document(usario_key)
                                 .update("Vacinas.Dupla.Data", getDateTime());
 
-                        Toast.makeText(ActivityCadastroVacina.this,
-                                "Vacina cadastra com sucesso",
-                                Toast.LENGTH_LONG).show();
-                        toHome();
+                        VacinaCadastrada();
                     }
 
                     if (Febre && codigoValido && !camposVazio) {
@@ -192,10 +163,7 @@ public class ActivityCadastroVacina extends AppCompatActivity {
                         db.collection("users").document(usario_key)
                                 .update("Vacinas.FebreA.Data", getDateTime());
 
-                        Toast.makeText(ActivityCadastroVacina.this,
-                                "Vacina cadastra com sucesso",
-                                Toast.LENGTH_LONG).show();
-                        toHome();
+                        VacinaCadastrada();
                     }
 
                     if (HepA && codigoValido && !camposVazio) {
@@ -206,10 +174,7 @@ public class ActivityCadastroVacina extends AppCompatActivity {
                         db.collection("users").document(usario_key)
                                 .update("Vacinas.HepA.Data", getDateTime());
 
-                        Toast.makeText(ActivityCadastroVacina.this,
-                                "Vacina cadastra com sucesso",
-                                Toast.LENGTH_LONG).show();
-                        toHome();
+                        VacinaCadastrada();
                     }
 
                     if (HepB && codigoValido && !camposVazio) {
@@ -220,10 +185,7 @@ public class ActivityCadastroVacina extends AppCompatActivity {
                         db.collection("users").document(usario_key)
                                 .update("Vacinas.HepB.Data", getDateTime());
 
-                        Toast.makeText(ActivityCadastroVacina.this,
-                                "Vacina cadastra com sucesso",
-                                Toast.LENGTH_LONG).show();
-                        toHome();
+                        VacinaCadastrada();
                     }
 
                     if (HPV && codigoValido && !camposVazio) {
@@ -234,10 +196,7 @@ public class ActivityCadastroVacina extends AppCompatActivity {
                         db.collection("users").document(usario_key)
                                 .update("Vacinas.HPV.Data", getDateTime());
 
-                        Toast.makeText(ActivityCadastroVacina.this,
-                                "Vacina cadastra com sucesso",
-                                Toast.LENGTH_LONG).show();
-                        toHome();
+                        VacinaCadastrada();
                     }
 
                     if (MegC && codigoValido && !camposVazio) {
@@ -248,10 +207,7 @@ public class ActivityCadastroVacina extends AppCompatActivity {
                         db.collection("users").document(usario_key)
                                 .update("Vacinas.Men.Data", getDateTime());
 
-                        Toast.makeText(ActivityCadastroVacina.this,
-                                "Vacina cadastra com sucesso",
-                                Toast.LENGTH_LONG).show();
-                        toHome();
+                        VacinaCadastrada();
                     }
 
                     if (Penta && codigoValido && !camposVazio) {
@@ -262,10 +218,7 @@ public class ActivityCadastroVacina extends AppCompatActivity {
                         db.collection("users").document(usario_key)
                                 .update("Vacinas.Penta.Data", getDateTime());
 
-                        Toast.makeText(ActivityCadastroVacina.this,
-                                "Vacina cadastra com sucesso",
-                                Toast.LENGTH_LONG).show();
-                        toHome();
+                        VacinaCadastrada();
                     }
 
                     if (Penv && codigoValido && !camposVazio) {
@@ -276,10 +229,7 @@ public class ActivityCadastroVacina extends AppCompatActivity {
                         db.collection("users").document(usario_key)
                                 .update("Vacinas.10V.Data", getDateTime());
 
-                        Toast.makeText(ActivityCadastroVacina.this,
-                                "Vacina cadastra com sucesso",
-                                Toast.LENGTH_LONG).show();
-                        toHome();
+                        VacinaCadastrada();
                     }
 
                     if (Rotavirus && codigoValido && !camposVazio) {
@@ -290,10 +240,7 @@ public class ActivityCadastroVacina extends AppCompatActivity {
                         db.collection("users").document(usario_key)
                                 .update("Vacinas.Rotavirus.Data", getDateTime());
 
-                        Toast.makeText(ActivityCadastroVacina.this,
-                                "Vacina cadastra com sucesso",
-                                Toast.LENGTH_LONG).show();
-                        toHome();
+                        VacinaCadastrada();
                     }
 
                     if (Tetra && codigoValido && !camposVazio) {
@@ -304,10 +251,7 @@ public class ActivityCadastroVacina extends AppCompatActivity {
                         db.collection("users").document(usario_key)
                                 .update("Vacinas.Tetra.Data", getDateTime());
 
-                        Toast.makeText(ActivityCadastroVacina.this,
-                                "Vacina cadastra com sucesso",
-                                Toast.LENGTH_LONG).show();
-                        toHome();
+                        VacinaCadastrada();
                     }
 
                     if (Triplice && codigoValido && !camposVazio) {
@@ -318,10 +262,7 @@ public class ActivityCadastroVacina extends AppCompatActivity {
                         db.collection("users").document(usario_key)
                                 .update("Vacinas.Triplice.Data", getDateTime());
 
-                        Toast.makeText(ActivityCadastroVacina.this,
-                                "Vacina cadastra com sucesso",
-                                Toast.LENGTH_LONG).show();
-                        toHome();
+                        VacinaCadastrada();
                     }
                     if (Vip && codigoValido && !camposVazio) {
                         db.collection("users").document(usario_key)
@@ -331,10 +272,7 @@ public class ActivityCadastroVacina extends AppCompatActivity {
                         db.collection("users").document(usario_key)
                                 .update("Vacinas.Vip.Data", getDateTime());
 
-                        Toast.makeText(ActivityCadastroVacina.this,
-                                "Vacina cadastra com sucesso",
-                                Toast.LENGTH_LONG).show();
-                        toHome();
+                        VacinaCadastrada();
                     }
 
 
@@ -344,6 +282,30 @@ public class ActivityCadastroVacina extends AppCompatActivity {
 
         });
     }
+
+    private void VacinaCadastrada() {
+        Toast.makeText(ActivityCadastroVacina.this,
+                "Vacina cadastra com sucesso",
+                Toast.LENGTH_LONG).show();
+        ActivityCadastroVacina2ActivityHomePage();
+    }
+
+    private void SteupVacina() {
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.nome_vacinas, android.R.layout.simple_spinner_item);
+        // Specify the layout to use when the list of choices appears
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Apply the adapter to the spinne
+        activity_cadastro_vacina_input_spineer.setAdapter(adapter);
+    }
+
+    private void ActivityCadastroVacinaBuscaId() {
+        activity_cadastro_vacina_button_cadastro_vacinas = findViewById(R.id.activity_cadastro_vacina_button_cadastro_vacinas);
+        activity_cadastro_vacina_input_codigo = findViewById(R.id.activity_cadastro_vacina_input_codigo);
+        activity_cadastro_vacina_input_spineer = findViewById(R.id.activity_cadastro_vacina_input_spineer);
+        activity_cadastro_vacina_input_lote = findViewById(R.id.activity_cadastro_vacina_input_lote);
+    }
+
     private String getDateTime() {
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         Date date = new Date();
