@@ -425,6 +425,7 @@ public class ActivityHomePage extends AppCompatActivity {
                 canvas.drawLine(170,55,170,380, paint);
                 canvas.drawLine(243,55,243,380, paint);
                 //coluna do lote
+                paint.setTextSize(10);
                 canvas.drawText(dbALote.get(0),178,90,paint);
                 canvas.drawText(dbALote.get(1),178, 110, paint);
                 canvas.drawText(dbALote.get(2),178, 130, paint);
@@ -503,7 +504,7 @@ public class ActivityHomePage extends AppCompatActivity {
 
 
         if(  item.getItemId()==R.id.item_editar){
-            Intent intent = new Intent(this, ActivityCompat.class);
+            Intent intent = new Intent(this, ActivityInformacoesPessoiasEdicao.class);
             startActivity(intent);
 
 
