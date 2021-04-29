@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -54,8 +55,13 @@ public class ActivityInformacoesPessoais extends AppCompatActivity {
                 String registarendereco = Acitivity_Informacoes_Pessoais_input_Endereco.getText().toString().trim();
                 String registradata = Acitivity_Informacoes_Pessoais_input_data_aniversario.getText().toString().trim();
 
-                if (!TextUtils.isEmpty(registarnome) || !TextUtils.isEmpty(registarsobrenome) ||
-                        !TextUtils.isEmpty(registarCPF) || !TextUtils.isEmpty(registarendereco) || !TextUtils.isEmpty(registradata)) {
+                if (!TextUtils.isEmpty(registarnome) && !TextUtils.isEmpty(registarsobrenome) &&
+                        !TextUtils.isEmpty(registarCPF) && !TextUtils.isEmpty(registarendereco) && !TextUtils.isEmpty(registradata)
+                        && !(registarnome.length() < 3)) {
+
+
+                    //Toast.makeText(ActivityInformacoesPessoais.this,"Infome nome com pelo menos 3 letras",Toast.LENGTH_LONG).show();
+
                     if (isCPF(registarCPF)) {
                         //Cria banco de dados
                         Map<String, Object> docData = criaBanco(registarnome, registarsobrenome, registarCPF, registarendereco, registradata);
@@ -78,6 +84,8 @@ public class ActivityInformacoesPessoais extends AppCompatActivity {
                     } else {
                         Toast.makeText(ActivityInformacoesPessoais.this, "CPF inválido", Toast.LENGTH_LONG).show();
                     }
+                }else{
+                    Toast.makeText(ActivityInformacoesPessoais.this,"Têm campos vazio ou nome menor que 3 carateres",Toast.LENGTH_LONG).show();
                 }
             }
         });

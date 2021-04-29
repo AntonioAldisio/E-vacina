@@ -10,8 +10,9 @@
         android:label="E-Vacina"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Evacina4">
-        android:requestLegacyExternalStorage="true"
+        android:theme="@style/Theme.Evacina4"
+        android:requestLegacyExternalStorage="true">
+
         <activity android:name="com.example.Evacina.ui.acitivity.ActivityEnfermeiro"></activity>
         <activity android:name="com.example.Evacina.ui.acitivity.ActivityInformacoesPessoiasEdicao" />
         <activity android:name="com.example.Evacina.ui.acitivity.ActivityCadastroVacina" />
