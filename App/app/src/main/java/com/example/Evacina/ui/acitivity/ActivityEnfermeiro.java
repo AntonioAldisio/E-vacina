@@ -53,7 +53,7 @@ public class ActivityEnfermeiro extends AppCompatActivity {
                 String coren = activityEnfermeiroBuscarId().getText().toString();
                 String codigoEnfermeiro = activity_enfermeiro_codigo_enfermeiro.getText().toString();
 
-                if (!TextUtils.isEmpty(nomeEnfermeiro) || !TextUtils.isEmpty(coren) || !TextUtils.isEmpty(codigoEnfermeiro)){
+                if (!TextUtils.isEmpty(nomeEnfermeiro) && !TextUtils.isEmpty(coren) && !TextUtils.isEmpty(codigoEnfermeiro) && nomeEnfermeiro.length()>=3){
                     // Criar banco
                     Map<String, Object> enfermeiros = CriarBancoEnfermeiros(nomeEnfermeiro, coren, codigoEnfermeiro);
 
@@ -73,7 +73,7 @@ public class ActivityEnfermeiro extends AppCompatActivity {
 
                 }
                 else{
-                    Toast.makeText(ActivityEnfermeiro.this, "Existem campos em branco!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(ActivityEnfermeiro.this, "Existem campos em branco ou nome menor que 3 letras!", Toast.LENGTH_LONG).show();
                 }
             }
         });
