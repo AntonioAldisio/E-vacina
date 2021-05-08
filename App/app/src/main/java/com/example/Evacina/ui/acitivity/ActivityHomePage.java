@@ -6,8 +6,10 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.app.NotificationCompat;
 
 import android.Manifest;
+import android.app.PendingIntent;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -70,6 +72,7 @@ public class ActivityHomePage extends AppCompatActivity {
     private Button Activity_homepage_button_PDF;
     private Bitmap imagem, iamgemEscala;
 
+    private String mensagem;
     //
 
 
@@ -95,7 +98,7 @@ public class ActivityHomePage extends AppCompatActivity {
         });
 //
 
-
+// Mostrar vacinas
         db.collection("users").document(usario_key)
                 .addSnapshotListener(new EventListener<DocumentSnapshot>() {
                     @Override
@@ -331,7 +334,31 @@ public class ActivityHomePage extends AppCompatActivity {
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, PackageManager.PERMISSION_GRANTED);
         createPDF();
         //
+        //
+        // Notifição de inicio de vacinação
 
+        db.collection("notificacoes").document("Inicio")
+                .addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+                    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
+                    @Override
+                    public void onEvent(DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException error) {
+                         mensagem = documentSnapshot.getString("Mensagem");
+                    }
+
+                });
+
+    }
+
+        @Override
+    protected void onStart(){
+        super.onStart();
+        FirebaseUser currentuser = FirebaseAuth.getInstance().getCurrentUser();
+
+        if(currentuser==null){
+            Intent intent = new Intent(ActivityHomePage.this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
     }
 
     private void ActivityHomePageBuscaId() {
@@ -509,10 +536,7 @@ public class ActivityHomePage extends AppCompatActivity {
 
 
         }
-        if(  item.getItemId()==R.id.item_vacinas){
-            //nada
-
-        }
+        if(  item.getItemId()==R.id.item_vacinas){ }
         if(  item.getItemId()==R.id.item_cadastrar){
             Intent intent = new Intent(this, ActivityCadastroVacina.class);
             startActivity(intent);
@@ -551,23 +575,6 @@ public class ActivityHomePage extends AppCompatActivity {
     }
 
     // fim do menu
-    @Override
-    protected void onStart(){
-        super.onStart();
-        FirebaseUser currentuser = FirebaseAuth.getInstance().getCurrentUser();
-
-        if(currentuser==null){
-            Intent intent = new Intent(ActivityHomePage.this, MainActivity.class);
-            startActivity(intent);
-            finish();
-        }
-
-
-
-
-    }
-
-
 
 
 }
